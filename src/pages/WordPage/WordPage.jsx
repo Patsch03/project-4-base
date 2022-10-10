@@ -1,16 +1,17 @@
 import {useState} from 'react'
 import axios from 'axios'
 import WordBox from '../../components/WordBox/WordBox';
+import Rhyme from '../../components/Rhyme/Rhyme'
+import './WordPage.css'
 export default function WordPage( ) {
-    // const axios = require("axios");
-    const delay = ms => new Promise(
-        resolve => setTimeout(resolve, ms)
-    );
     const [parameter, setParameter] = useState("");
+    const [rhymeParameter, setRhymeParameter] = useState("");
     const [data, setData] = useState("empty");
     const [rhymeData, setRhymeData] = useState("empty");
-    let error = "";
     const [display, setDisplay] = useState(false);
+    let error = ""
+    const [rhymeDisplay, setRhymeDisplay] = useState(false);
+    const [rhymeCheckDisp, setRhymeCheckDisp] = useState(false);
 
 
     //Endpoint to pull standard word data
@@ -31,14 +32,15 @@ export default function WordPage( ) {
             console.error(error);
         });
         setDisplay(true);
+        setRhymeCheckDisp(true);
     }
 
 
     //Seperate endpoint to pull rhymes
-    function getRhymes(){
+    function getRhymes(parameter2){
         const options = {
             method: 'GET',
-            url: 'https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/rhymes',
+            url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}/rhymes`,
             headers: {
               'X-RapidAPI-Key': 'a21d70600cmsh186ccfce56852d2p117012jsn405975b2a5c1',
               'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
@@ -46,10 +48,11 @@ export default function WordPage( ) {
           };
           
           axios.request(options).then(function (response) {
-              console.log(response.data);
+              setRhymeData(response.data);
           }).catch(function (error) {
               console.error(error);
           });
+          setRhymeDisplay(true);
     }
     
     async function handleSubmit(evt){
@@ -64,8 +67,23 @@ export default function WordPage( ) {
     async function handleChange(evt){
         setParameter(evt.target.value);
         setDisplay(false);
+        setRhymeCheckDisp(false);
+        
     };
 
+    async function handleRhymeChange(evt){
+        setRhymeParameter(evt.target.value);
+        setRhymeDisplay(false);
+    };
+
+    async function handleRhymeSubmit(evt){
+        evt.preventDefault();
+        try {
+            getRhymes(rhymeParameter);
+        } catch {
+            error = 'error'
+        }
+    }
 
   return (
     <main>
@@ -77,13 +95,24 @@ export default function WordPage( ) {
 
         {display &&
             <h2>
-            <WordBox data = {data}/>
+                <WordBox data = {data}/>
             </h2>
         }
 
-        {display &&
+
+        {/* DONT WANT ANYTHING BELOW THIS TO DISPLAY UNLESS WORD IS ALREADY RENDERED ON PAGE */}
+        {rhymeCheckDisp &&
+
+            <form autoComplete="off" onSubmit={handleRhymeSubmit}>
+                <input type="text" value={rhymeParameter} onChange={handleRhymeChange} required/>
+                <button type="submit">Check Rhyme</button>
+            </form>
+        }
+        
+
+        {rhymeDisplay && rhymeCheckDisp &&
             <h2>
-                <Rhyme data ={data}/>
+                <Rhyme rhymeData ={rhymeData} data ={data}/>
             </h2>
         }
     </main>
