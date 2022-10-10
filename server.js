@@ -14,7 +14,7 @@ app.use(logger('dev'));
 // Content-Type: 'application/json'
 // and put that data on req.body
 app.use(express.json());
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico'))); COMMENTED THIS OUT MIGHT BE IMPORTANT?!?
 app.use(express.static(path.join(__dirname, 'build')));
 
 // middleware that adds the user object from a JWT to req.user
