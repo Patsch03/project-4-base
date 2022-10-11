@@ -3,6 +3,7 @@ import axios from 'axios'
 import WordBox from '../../components/WordBox/WordBox';
 import Rhyme from '../../components/Rhyme/Rhyme'
 import './WordPage.css'
+import { createWord } from '../../utilities/users-api';
 export default function WordPage( ) {
     const [parameter, setParameter] = useState("");
     const [rhymeParameter, setRhymeParameter] = useState("");
@@ -30,6 +31,8 @@ export default function WordPage( ) {
             setData(response.data);
             setDisplay(true);
             setRhymeCheckDisp(true);
+            createWord(response.data);
+            console.log("word created ran")
             setErrorDisplay(false);
         }).catch(function (error) {
             if(error){

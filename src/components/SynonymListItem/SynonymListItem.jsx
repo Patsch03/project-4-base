@@ -1,5 +1,5 @@
 export default function OrderDetail({value, index}) {
   return (
-    <li>{value}</li>
+    <li key={index}>{value}</li>
   );
 }
