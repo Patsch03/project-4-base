@@ -11,6 +11,8 @@ export default function WordPage( ) {
     const [display, setDisplay] = useState(false);
     const [rhymeDisplay, setRhymeDisplay] = useState(false);
     const [rhymeCheckDisp, setRhymeCheckDisp] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("Word does not exist");
+    const [errorDisplay, setErrorDisplay] = useState(false);
     let error = ""
 
 
@@ -26,13 +28,16 @@ export default function WordPage( ) {
               };
         axios.request(options).then(function (response) {
             setData(response.data);
-            // console.log(data);
-            // console.log(response.data);
+            setDisplay(true);
+            setRhymeCheckDisp(true);
+            setErrorDisplay(false);
         }).catch(function (error) {
-            console.error(error);
+            if(error){
+                setErrorDisplay(true);
+            }
         });
-        setDisplay(true);
-        setRhymeCheckDisp(true);
+        
+        
         
     }
 
@@ -61,7 +66,7 @@ export default function WordPage( ) {
         try {
             getAPI(parameter);
         } catch {
-            error = 'error'
+            console.log("error");
         }
     }
 
@@ -82,7 +87,7 @@ export default function WordPage( ) {
         try {
             getRhymes(rhymeParameter);
         } catch {
-            error = 'error'
+            console.log("error")
         }
     }
 
@@ -93,6 +98,14 @@ export default function WordPage( ) {
             <input type="text" value={parameter} onChange={handleChange} required/>
             <button type="submit">Search</button>
         </form>
+
+
+        {errorDisplay &&
+            <h2>
+                {errorMsg}
+            </h2>
+
+        }
 
         {display &&
             <h2>
