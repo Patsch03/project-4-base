@@ -12,7 +12,7 @@ export default function WordBox({data}) {
                 {data !== empty ? data.results[1].synonyms.map((value, index) => <SynonymListItem value={value} index={index}/>) : console.log("error")}
             </ul>
             <p>Part of speech: {data !== empty ? data.results[1].partOfSpeech : console.log("error")}</p>
-            <p>Syllables: {data !== empty ? data.syllables.count : console.log("error")}</p>
+            <p>Syllables: {data != empty ? data.syllables.count : console.log("error")}</p>
             <p>Individual Syllables: {data !== empty ? data.syllables.list.map((value, index) => <SyllableList value={value} index={index}/>) : console.log("error")}</p>
             
         </div>

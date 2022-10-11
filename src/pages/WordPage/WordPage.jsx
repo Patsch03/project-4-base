@@ -20,7 +20,7 @@ export default function WordPage( ) {
                 method: 'GET',
                 url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}`,
                 headers: {
-                  'X-RapidAPI-Key': `${process.env.API_KEY}`,
+                  'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`,
                   'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
                 }
               };
@@ -33,6 +33,7 @@ export default function WordPage( ) {
         });
         setDisplay(true);
         setRhymeCheckDisp(true);
+        
     }
 
 
@@ -42,7 +43,7 @@ export default function WordPage( ) {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}/rhymes`,
             headers: {
-              'X-RapidAPI-Key': `${process.env.API_KEY}`,
+              'X-RapidAPI-Key': `${process.env.REACT_APP_API_KEY}`,
               'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
             }
           };
