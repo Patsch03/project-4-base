@@ -9,9 +9,9 @@ export default function WordPage( ) {
     const [data, setData] = useState("empty");
     const [rhymeData, setRhymeData] = useState("empty");
     const [display, setDisplay] = useState(false);
-    let error = ""
     const [rhymeDisplay, setRhymeDisplay] = useState(false);
     const [rhymeCheckDisp, setRhymeCheckDisp] = useState(false);
+    let error = ""
 
 
     //Endpoint to pull standard word data
@@ -20,7 +20,7 @@ export default function WordPage( ) {
                 method: 'GET',
                 url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}`,
                 headers: {
-                  'X-RapidAPI-Key': 'a21d70600cmsh186ccfce56852d2p117012jsn405975b2a5c1',
+                  'X-RapidAPI-Key': `${process.env.API_KEY}`,
                   'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
                 }
               };
@@ -42,7 +42,7 @@ export default function WordPage( ) {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}/rhymes`,
             headers: {
-              'X-RapidAPI-Key': 'a21d70600cmsh186ccfce56852d2p117012jsn405975b2a5c1',
+              'X-RapidAPI-Key': `${process.env.API_KEY}`,
               'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
             }
           };
