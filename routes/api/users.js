@@ -17,4 +17,6 @@ router.post('/login', usersCtrl.login);
 // WORD CREATE, LEAVING IN SAME FUNCTION SO I UNDERSTAND BETTER FIX LATER
 router.post('/create-word', wordCtrl.create);
 
+router.get('/word-list', wordCtrl.getWords);
+
 module.exports = router;

@@ -18,3 +18,7 @@ export function checkToken() {
 export function createWord(wordInfo) {
   return sendRequest(`${BASE_URL}/create-word`, 'POST', wordInfo);
 }
+
+export function getWords() {
+  return sendRequest(`${BASE_URL}/word-list`);
+}

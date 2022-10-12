@@ -4,6 +4,7 @@ import WordBox from '../../components/WordBox/WordBox';
 import Rhyme from '../../components/Rhyme/Rhyme'
 import './WordPage.css'
 import { createWord } from '../../utilities/users-api';
+import { getWords } from '../../utilities/users-api';
 export default function WordPage( ) {
     const [parameter, setParameter] = useState("");
     const [rhymeParameter, setRhymeParameter] = useState("");
@@ -30,9 +31,11 @@ export default function WordPage( ) {
         axios.request(options).then(function (response) {
             setData(response.data);
             setDisplay(true);
+
+            getWords();
+
             setRhymeCheckDisp(true);
             createWord(response.data);
-            console.log("word created ran")
             setErrorDisplay(false);
         }).catch(function (error) {
             if(error){

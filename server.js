@@ -7,7 +7,11 @@ require('dotenv').config();
 // Connect to db after the dotenv above
 require('./config/database');
 
+let cors = require("cors");
+
 const app = express();
+
+app.use(cors());
 
 app.use(logger('dev'));
 // Process data in body of request if 
