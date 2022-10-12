@@ -17,10 +17,18 @@ function getWords(req,res){
 }
 
 function create(req, res) {
-    const word = new Word(req.body);
-    word.save()
+    Word.exists({word: req.body.word}, function(err, docs){
+        if(docs == null){
+            const word = new Word(req.body);
+            word.save()
+        }else{
+            console.log("duplicate")
+        }
+    })
+}
+
     // needs duplication implementation
     // can only create one per refresh
 
-}
+
 
