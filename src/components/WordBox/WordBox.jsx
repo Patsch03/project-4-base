@@ -9,12 +9,7 @@ export default function WordBox({data}) {
     let empty2 = {};
     let empty3 = [];
     const [word, setWord] = useState({});
-    // useEffect(()=> {
-    //   axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
-    //     // console.log(typeof response)
-    //     setWord(response);
-    //   })
-    // },[])
+
 
     function load(){
       axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
@@ -22,6 +17,10 @@ export default function WordBox({data}) {
         setWord(response);
     })
     }
+
+    useEffect(()=> {
+      load();
+    },[])
 
     function getIndex(arr){
       for(let i = 0; i < arr.length; i++){
@@ -46,7 +45,7 @@ export default function WordBox({data}) {
         </div> */}
 
         <div>
-          {load()}
+          {/* {load()} */}
           <p>Word: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].word}</span>}</p>
           {/* {console.log(word.data == undefined ? console.log("error") : console.log(word.data[0].results[0]))} */}
           <p>Definition: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].definition}</span>}</p>

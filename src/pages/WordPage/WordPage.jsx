@@ -19,7 +19,7 @@ export default function WordPage( ) {
 
 
     //Endpoint to pull standard word data
-    function getAPI(parameter2){
+    async function getAPI(parameter2){
             let options = {
                 method: 'GET',
                 url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}`,
@@ -33,8 +33,11 @@ export default function WordPage( ) {
             setDisplay(true);
             setRhymeCheckDisp(true);
             createWord(response.data);
+            console.log("word created")
             setErrorDisplay(false);
+            console.log("about to fetch word")
             getWords();
+            console.log("fetched")
         }).catch(function (error) {
             if(error){
                 setErrorDisplay(true);
@@ -47,7 +50,7 @@ export default function WordPage( ) {
 
 
     //Seperate endpoint to pull rhymes
-    function getRhymes(parameter2){
+    async function getRhymes(parameter2){
         const options = {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${parameter2}/rhymes`,
