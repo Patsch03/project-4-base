@@ -31,12 +31,10 @@ export default function WordPage( ) {
         axios.request(options).then(function (response) {
             setData(response.data);
             setDisplay(true);
-
-            getWords();
-
             setRhymeCheckDisp(true);
             createWord(response.data);
             setErrorDisplay(false);
+            getWords();
         }).catch(function (error) {
             if(error){
                 setErrorDisplay(true);

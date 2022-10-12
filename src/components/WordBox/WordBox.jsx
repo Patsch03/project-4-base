@@ -9,12 +9,27 @@ export default function WordBox({data}) {
     let empty2 = {};
     let empty3 = [];
     const [word, setWord] = useState({});
-    useEffect(()=> {
+    // useEffect(()=> {
+    //   axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
+    //     // console.log(typeof response)
+    //     setWord(response);
+    //   })
+    // },[])
+
+    function load(){
       axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
         // console.log(typeof response)
         setWord(response);
-      })
-    },[])
+    })
+    }
+
+    function getIndex(arr){
+      for(let i = 0; i < arr.length; i++){
+        if(arr[i].word == data.word){
+          return i;
+        }
+      }
+    }
 
   return (
     <>
@@ -31,11 +46,12 @@ export default function WordBox({data}) {
         </div> */}
 
         <div>
-          <p>Word: {word.data == undefined ? console.log("error") : <span>{word.data[0].word}</span>}</p>
+          {load()}
+          <p>Word: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].word}</span>}</p>
           {/* {console.log(word.data == undefined ? console.log("error") : console.log(word.data[0].results[0]))} */}
-          <p>Definition: {word.data == undefined ? console.log("error") : <span>{word.data[0].results[0].definition}</span>}</p>
-          <p>Part of speech: {word.data == undefined ? console.log("error") : <span>{word.data[0].results[0].partOfSpeech}</span>}</p>
-          <p>Synonyms: {word.data == undefined ? console.log("error") : <span>{word.data[0].results[0].synonyms}</span>}</p>
+          <p>Definition: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].definition}</span>}</p>
+          <p>Part of speech: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].partOfSpeech}</span>}</p>
+          <p>Synonyms: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].synonyms}</span>}</p>
 
         </div>
     

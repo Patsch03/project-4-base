@@ -6,12 +6,6 @@ module.exports = {
   getWords,
 };
 
-
-function create(req, res) {
-    // const word = new Word(req.body);
-    // word.save()
-}
-
 function getWords(req,res){
     Word.find({}, function(err, docs){
         if(!err){
@@ -21,3 +15,9 @@ function getWords(req,res){
         }
     });
 }
+
+function create(req, res) {
+    const word = new Word(req.body);
+    word.save()
+}
+
