@@ -5,6 +5,7 @@ import Rhyme from '../../components/Rhyme/Rhyme'
 import './WordPage.css'
 import { createWord } from '../../utilities/users-api';
 import { getWords } from '../../utilities/users-api';
+
 export default function WordPage( ) {
     const [parameter, setParameter] = useState("");
     const [rhymeParameter, setRhymeParameter] = useState("");
@@ -18,6 +19,12 @@ export default function WordPage( ) {
     let error = ""
 
 
+    function load(){
+        axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
+          setData(response);
+      })
+      }
+
     //Endpoint to pull standard word data
     async function getAPI(parameter2){
             let options = {
@@ -28,13 +35,15 @@ export default function WordPage( ) {
                   'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
                 }
               };
+
         axios.request(options).then(function (response) {
-            setData(response.data);
-            setDisplay(true);
-            setRhymeCheckDisp(true);            
             createWord(response.data);
-            setErrorDisplay(false);
+            setData(response.data);
             getWords();
+            setDisplay(true);
+            setRhymeCheckDisp(true);
+            setErrorDisplay(false);
+
         }).catch(function (error) {
             if(error){
                 setErrorDisplay(true);
@@ -113,6 +122,7 @@ export default function WordPage( ) {
 
         {display &&
             <h2>
+                {}
                 <WordBox data = {data}/>
             </h2>
         }
