@@ -110,7 +110,7 @@ export default function WordPage( ) {
     <main>
 
         <h1>Search a Word!</h1>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form class="form"autoComplete="off" onSubmit={handleSubmit}>
             <div class="center">
                 <input class= "text-input"type="text" value={parameter} onChange={handleChange} required></input>
             </div>
@@ -140,7 +140,7 @@ export default function WordPage( ) {
         {/* DONT WANT ANYTHING BELOW THIS TO DISPLAY UNLESS WORD IS ALREADY RENDERED ON PAGE */}
         {rhymeCheckDisp &&
 
-            <form autoComplete="off" onSubmit={handleRhymeSubmit}>
+            <form class="form"autoComplete="off" onSubmit={handleRhymeSubmit}>
                 <input type="text" value={rhymeParameter} onChange={handleRhymeChange} required/>
                 <button type="submit">Check Rhyme</button>
             </form>
