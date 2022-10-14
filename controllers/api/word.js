@@ -1,5 +1,5 @@
 const { db } = require('../../models/word');
-const Word = require('../../models/word');
+const Word = require('../../models/word')
 
 module.exports = {
   create,
@@ -25,6 +25,8 @@ function create(req, res) {
             console.log("duplicate")
         }
     })
+
+
 }
 
 

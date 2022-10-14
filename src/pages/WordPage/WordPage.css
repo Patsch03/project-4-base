@@ -39,9 +39,11 @@ form{
 
 .font{
    font-weight: 400;
+   font-family: "Times New Roman", Times, serif;
 }
 
 .list{
    text-align: left;
+   font-family: "Times New Roman", Times, serif;
    font-weight: 400;
 }

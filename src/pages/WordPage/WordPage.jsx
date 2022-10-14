@@ -5,6 +5,7 @@ import Rhyme from '../../components/Rhyme/Rhyme'
 import './WordPage.css'
 import { createWord } from '../../utilities/users-api';
 import { getWords } from '../../utilities/users-api';
+import { getUser } from '../../utilities/users-service';
 
 
 export default function WordPage( ) {
@@ -17,6 +18,7 @@ export default function WordPage( ) {
     const [rhymeCheckDisp, setRhymeCheckDisp] = useState(false);
     const [errorMsg, setErrorMsg] = useState("Word does not exist");
     const [errorDisplay, setErrorDisplay] = useState(false);
+    const [user, setUser] = useState(getUser());
     let error = ""
 
 
@@ -50,9 +52,6 @@ export default function WordPage( ) {
                 setErrorDisplay(true);
             }
         });
-        
-        
-        
     }
 
 
@@ -107,6 +106,8 @@ export default function WordPage( ) {
 
   return (
     <main>
+
+      <h1>{getUser().uniqueWords}</h1>
       <h1>Home Page Search</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>
             <input class= "text-input"type="text" value={parameter} onChange={handleChange} required></input>
@@ -129,6 +130,8 @@ export default function WordPage( ) {
                 <WordBox data = {data}/>
             </h2>
         }
+
+        
 
 
         {/* DONT WANT ANYTHING BELOW THIS TO DISPLAY UNLESS WORD IS ALREADY RENDERED ON PAGE */}
