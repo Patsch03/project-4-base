@@ -1,0 +1,15 @@
+.WordBox{
+    background-color: bisque;
+    margin: auto;
+    width: 50%;
+}
+
+
+@media screen and (max-width: 950px) {
+    .WordBox{
+        margin: auto;
+        width: 100%;
+    }
+}
+
+

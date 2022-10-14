@@ -6,6 +6,7 @@ import './WordPage.css'
 import { createWord } from '../../utilities/users-api';
 import { getWords } from '../../utilities/users-api';
 
+
 export default function WordPage( ) {
     const [parameter, setParameter] = useState("");
     const [rhymeParameter, setRhymeParameter] = useState("");
@@ -108,8 +109,8 @@ export default function WordPage( ) {
     <main>
       <h1>Home Page Search</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <input type="text" value={parameter} onChange={handleChange} required/>
-            <button type="submit">Search</button>
+            <input class= "text-input"type="text" value={parameter} onChange={handleChange} required></input>
+            <button type="submit">Search (Non-Plural Words)</button>
         </form>
 
 
@@ -119,6 +120,8 @@ export default function WordPage( ) {
             </h2>
 
         }
+
+
 
         {display &&
             <h2>

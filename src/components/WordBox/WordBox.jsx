@@ -4,7 +4,10 @@ import SyllableList from '../SyllableList/SyllableList';
 import { useEffect } from 'react';
 import axios from 'axios'
 import { useState } from 'react';
+import './WordBox.css'
+import * as React from 'react';
 export default function WordBox({data}) {
+
     let empty = "empty";
     let empty2 = {};
     let empty3 = [];
@@ -31,17 +34,24 @@ export default function WordBox({data}) {
 
   return (
     <>
-        <p>Definition: {data !== empty? <span>{data.results[1].definition}</span> : console.log("error")}</p>
-        <div>
-            Synonyms:
-            <ul>
-                {data !== empty ? data.results[1].synonyms.map((value, index) => <SynonymListItem value={value} index={index}/>) : console.log("error")}
-            </ul>
-            <p>Part of speech: {data !== empty ? data.results[1].partOfSpeech : console.log("error")}</p>
-            <p>Syllables: {data != empty ? data.syllables.count : console.log("error")}</p>
-            <p>Individual Syllables: {data !== empty ? data.syllables.list.map((value, index) => <SyllableList value={value} index={index}/>) : console.log("error")}</p>
-            
+
+        {console.log(data.results)}
+        <div class="WordBox">
+          <p class="info">Definition: {data.results !== undefined? <span class="font">{data.results[0].definition}</span> : console.log("error")}</p>
+          <div>
+              <p class ="info">Synonyms:</p>
+              <ul>
+                  {data.results !== undefined || data.results.length > 1 ? data.results[0].synonyms.map((value, index) => <SynonymListItem value={value} index={index}/>) : console.log("error")}
+              </ul>
+              <p class="info">Part of speech: {data.results !== undefined || data !== empty ? <span class="font">{data.results[0].partOfSpeech}</span> : console.log("error")}</p>
+              <p class="info">Syllables: {data.results !== undefined || data != empty ? <span class="font">{data.syllables.count}</span> : console.log("error")}</p>
+              <p class="info">Individual Syllables: {data.results !== undefined || data != empty ? data.syllables.list.map((value, index) => <SyllableList value={value} index={index}/>) : console.log("error")}</p>
+              
+          </div>
+
         </div>
+
+        
 
         {/* <div>
           <p>Word: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].word}</span>}</p> {/* error might come from localhost:3001 not being refreshed because its fetching data from there. not the mongo database (Almost definitely this) */}
@@ -50,6 +60,7 @@ export default function WordBox({data}) {
           <p>Part of speech: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].partOfSpeech}</span>}</p>
           <p>Synonyms: {word.data == undefined ? console.log("error") : <span>{word.data[getIndex(word.data)].results[0].synonyms}</span>}</p>
         </div> */}
+        
     </>
   );
 }
