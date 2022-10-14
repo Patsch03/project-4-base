@@ -21,8 +21,11 @@ button[type=submit]{
 }
 
 form{
+   display: inline-block;
    margin: auto;
-   width: 50%
+   width: 50%;
+   border-radius: 25px;
+
 }
 
 @media screen and (max-width: 950px) {
@@ -46,4 +49,21 @@ form{
    text-align: left;
    font-family: "Times New Roman", Times, serif;
    font-weight: 400;
+}
+
+.image{
+   position: absolute;
+   top: 0px;
+   left: 0px;
+}
+
+@media screen and (max-width: 950px) {
+   .image{
+      width: 0px;
+      height: 0px;
+   }
+   
+}
+.center{
+   margin: auto
 }

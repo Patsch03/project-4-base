@@ -18,9 +18,7 @@ const userSchema = new Schema({
     trim: true,
     minlength: 3,
     required: true
-  },
-  uniqueWords: {type: Number, default: 0},
-  
+  },  
 }, {
   timestamps: true,
   toJSON: {

@@ -67,7 +67,9 @@ export default function WordPage( ) {
           };
           
           axios.request(options).then(function (response) {
-              setRhymeData(response.data);
+            if(response.data){
+                setRhymeData(response.data);
+            }
           }).catch(function (error) {
               console.error(error);
           });
@@ -107,10 +109,11 @@ export default function WordPage( ) {
   return (
     <main>
 
-      <h1>{getUser().uniqueWords}</h1>
-      <h1>Home Page Search</h1>
+        <h1>Search a Word!</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <input class= "text-input"type="text" value={parameter} onChange={handleChange} required></input>
+            <div class="center">
+                <input class= "text-input"type="text" value={parameter} onChange={handleChange} required></input>
+            </div>
             <button type="submit">Search (Non-Plural Words)</button>
         </form>
 
@@ -149,6 +152,10 @@ export default function WordPage( ) {
                 <Rhyme rhymeData ={rhymeData} data ={data}/>
             </h2>
         }
+
+
+        <img class="image" height="150" width="150" src= "https://i.imgur.com/u5GvLPu.png"/>
+
     </main>
   );
 }

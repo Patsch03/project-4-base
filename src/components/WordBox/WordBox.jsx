@@ -35,21 +35,31 @@ export default function WordBox({data}) {
   return (
     <>
 
-        {console.log(data.results)}
+        {data.results ? 
+        
+        
         <div class="WordBox">
-          <p class="info">Definition: {data.results !== undefined? <span class="font">{data.results[0].definition}</span> : console.log("error")}</p>
+          <p class="info">Definition: {data.results !== undefined? <span class="font">{data.results[0].definition}</span> : <p>N/A</p>}</p>
           <div>
               <p class ="info">Synonyms:</p>
               <ul>
-                  {data.results !== undefined || data.results.length > 1 ? data.results[0].synonyms.map((value, index) => <SynonymListItem value={value} index={index}/>) : console.log("error")}
+                  {data.results[0].synonyms == undefined ? <p>N/A</p> : data.results[0].synonyms.map((value, index) => <SynonymListItem value={value} index={index}/>) }
               </ul>
               <p class="info">Part of speech: {data.results !== undefined || data !== empty ? <span class="font">{data.results[0].partOfSpeech}</span> : console.log("error")}</p>
-              <p class="info">Syllables: {data.results !== undefined || data != empty ? <span class="font">{data.syllables.count}</span> : console.log("error")}</p>
-              <p class="info">Individual Syllables: {data.results !== undefined || data != empty ? data.syllables.list.map((value, index) => <SyllableList value={value} index={index}/>) : console.log("error")}</p>
+              <p class="info">Syllables: {data.syllables == undefined ? <p>N/A</p> : <span class="font">{data.syllables.count}</span> }</p>
+              <p class="info">Individual Syllables: {data.syllables == undefined ? <p>N/A</p> : data.syllables.list.map((value, index) => <SyllableList value={value} index={index}/>) }</p>
               
           </div>
 
-        </div>
+        </div>  
+
+        
+        : 
+        
+        <p>Plural word searched! Please only search singular words!</p>
+        
+        }
+        
 
         
 
