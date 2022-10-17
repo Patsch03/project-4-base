@@ -18,7 +18,7 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/word-page" element={<WordPage />} />
+            <Route path="/" element={<WordPage />} />
           </Routes>
         </>
         :

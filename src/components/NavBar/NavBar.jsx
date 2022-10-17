@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav class="navbar">
-      <Link to="/word-page">Word Page</Link>
+      <Link to="/">Word Page</Link>
       &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
       &nbsp; | &nbsp;
