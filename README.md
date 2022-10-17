@@ -23,3 +23,24 @@ This is my last project at General Assembly and the project I decided to do was 
 
 # Getting started 
 [Website](https://project-4-patrick-webster1.herokuapp.com/)
+Its super simple to use as a single page application, all you have to do is search a word and it will give you back all the information you need and then you can check if a word rhymes or not
+
+# Original planning 
+[Whimsical](https://whimsical.com/webster-7dwA6xK3Mu6p4mCBSrW7Ka)
+[Lucid Chart]()
+[Trello](https://trello.com/b/2GXZgIMV/project-management)
+
+# Wins 
+The major win for this project was being able to pull information from an api and read it as well as storing it in a database
+
+# Hurdles
+The major hurdle for this project was the CSS for me. CSS is my weakest skill and im still developing being able to make things look good but I think that I was able to make the website look decent and fit the theme of an online dictionary
+
+# Next steps
+- Word of the day
+- Images of searched word 
+
+# Credits
+- Patrick Schenk 
+- Instructional team at General Assembly 
+- All my classmates at General Assembly
