@@ -9,24 +9,37 @@ import { getUser } from '../../utilities/users-service';
 
 
 export default function WordPage( ) {
+    // user input that goes into api url 
     const [parameter, setParameter] = useState("");
+
+    // user input to check whether a word rhymes
     const [rhymeParameter, setRhymeParameter] = useState("");
+
+    // information that gets sent to backend after word submission
     const [data, setData] = useState("empty");
+
+    // list of words that rhyme with the word that is being searched
     const [rhymeData, setRhymeData] = useState("empty");
+
+    // Says whether or not certain things should be displayed 
     const [display, setDisplay] = useState(false);
+
+    // Says whether or not the rhyme result should be displayed 
     const [rhymeDisplay, setRhymeDisplay] = useState(false);
+
+    // Checks if a wordbox is displayed
     const [rhymeCheckDisp, setRhymeCheckDisp] = useState(false);
+
+    // Error message
     const [errorMsg, setErrorMsg] = useState("Word does not exist");
+    
+    // Displays above error message
     const [errorDisplay, setErrorDisplay] = useState(false);
+
+    // User
     const [user, setUser] = useState(getUser());
     let error = ""
 
-
-    function load(){
-        axios.get('http://localhost:3001/api/users/word-list').then((response) =>{
-          setData(response);
-      })
-      }
 
     //Endpoint to pull standard word data
     async function getAPI(parameter2){
@@ -76,6 +89,7 @@ export default function WordPage( ) {
           setRhymeDisplay(true);
     }
     
+    // What to do on form submission
     async function handleSubmit(evt){
         evt.preventDefault();
         try {
@@ -84,7 +98,7 @@ export default function WordPage( ) {
             console.log("error");
         }
     }
-
+    // Changes input box and stores value
     async function handleChange(evt){
         setParameter(evt.target.value);
         setDisplay(false);
@@ -92,11 +106,13 @@ export default function WordPage( ) {
         
     };
 
+    // Submission for Rhyme form
     async function handleRhymeChange(evt){
         setRhymeParameter(evt.target.value);
         setRhymeDisplay(false);
     };
 
+    // Changes Rhyme input box and stores value
     async function handleRhymeSubmit(evt){
         evt.preventDefault();
         try {
@@ -108,7 +124,7 @@ export default function WordPage( ) {
 
   return (
     <main>
-
+        {/* Search form */}
         <h1>Search a Word!</h1>
         <form class="form"autoComplete="off" onSubmit={handleSubmit}>
             <div class="center">
@@ -117,7 +133,7 @@ export default function WordPage( ) {
             <button type="submit">Search (Non-Plural Words)</button>
         </form>
 
-
+        {/* Displaying error message if there is an error */}
         {errorDisplay &&
             <h2>
                 {errorMsg}
@@ -125,8 +141,7 @@ export default function WordPage( ) {
 
         }
 
-
-
+        {/* displays the wordbox (word information) after display is made true when word is inputed */}
         {display &&
             <h2>
                 {}
@@ -134,19 +149,15 @@ export default function WordPage( ) {
             </h2>
         }
 
-        
-
-
-        {/* DONT WANT ANYTHING BELOW THIS TO DISPLAY UNLESS WORD IS ALREADY RENDERED ON PAGE */}
+        {/* Rhyme input form */}
         {rhymeCheckDisp &&
-
             <form class="form"autoComplete="off" onSubmit={handleRhymeSubmit}>
                 <input type="text" value={rhymeParameter} onChange={handleRhymeChange} required/>
                 <button type="submit">Check Rhyme</button>
             </form>
         }
         
-
+        {/* displays if something rhymes after searched */}
         {rhymeDisplay && rhymeCheckDisp &&
             <h2>
                 <Rhyme rhymeData ={rhymeData} data ={data}/>

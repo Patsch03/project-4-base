@@ -5,9 +5,6 @@ const Schema = mongoose.Schema;
 const wordSchema = new Schema({
     word: {type: String},
     results: {type: Array},
-
-    
-    
 })
 
 
