@@ -22,7 +22,8 @@ This is my last project at General Assembly and the project I decided to do was 
 - Imgur
 
 # Getting started 
-[Website](https://project-4-patrick-webster1.herokuapp.com/)
+[Live Website](https://project-4-patrick-webster1.herokuapp.com/)<br>
+
 Its super simple to use as a single page application, all you have to do is search a word and it will give you back all the information you need and then you can check if a word rhymes or not
 
 # Original planning 
