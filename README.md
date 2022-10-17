@@ -27,9 +27,9 @@ This is my last project at General Assembly and the project I decided to do was 
 Its super simple to use as a single page application, all you have to do is search a word and it will give you back all the information you need and then you can check if a word rhymes or not
 
 # Original planning 
-[Whimsical](https://whimsical.com/webster-7dwA6xK3Mu6p4mCBSrW7Ka)
-[Lucid Chart]()
-[Trello](https://trello.com/b/2GXZgIMV/project-management)
+- [Whimsical](https://whimsical.com/webster-7dwA6xK3Mu6p4mCBSrW7Ka)
+- [Lucid Chart](https://lucid.app/lucidchart/338ad829-7290-4b95-830b-25222a6551f2/edit?invitationId=inv_354389e9-3fad-46a1-b246-ce496530ccbb)
+- [Trello](https://trello.com/b/2GXZgIMV/project-management)
 
 # Wins 
 The major win for this project was being able to pull information from an api and read it as well as storing it in a database
